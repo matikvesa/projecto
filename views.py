@@ -1,20 +1,12 @@
+from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import Template, context
 
-def saludo(request):
-    return HttpResponse("HOLA")
+from .models import Curso
 
-def probando(self):
+# Create your views here.
 
-    miHtml = open("C:\Users\Matias\Desktop\Proyecto Python\Django\Django\Plantilla\Prueba.html") 
+def ver_curso(request):
+    curso = Curso(nombre="prueba", camada = 4)
+    curso.save
 
-    plantilla = Template(miHtml.read())
-
-    miHtml.close()
-
-    miContexto = context()
-
-    documento = plantilla.render(miContexto)
-
-    return HttpResponse(documento)
-    
+    return HttpResponse(f'{curso.nombre} {curso.camada}')
